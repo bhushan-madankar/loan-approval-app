@@ -27,4 +27,4 @@ client/.vite/
 Thumbs.db
 
 # Model files
-ml-model/model.pkl
+# ml-model/model.pkl
