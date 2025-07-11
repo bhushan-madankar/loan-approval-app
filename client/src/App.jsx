@@ -35,7 +35,7 @@ export default function App() {
     };
 
     // const res = await axios.post('http://localhost:5000/predict', payload); // also fix port
-    const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/predict`, data)
+    const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/predict`, payload)
 
     setResult(res.data.result);
   } catch (err) {
