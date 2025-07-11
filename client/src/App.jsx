@@ -14,15 +14,33 @@ export default function App() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const res = await axios.post('http://localhost:4000/predict', form);
+  //     setResult(res.data.result);
+  //   } catch (err) {
+  //     setResult("Error predicting result");
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await axios.post('http://localhost:4000/predict', form);
-      setResult(res.data.result);
-    } catch (err) {
-      setResult("Error predicting result");
-    }
-  };
+  e.preventDefault();
+  try {
+    const payload = {
+      Age: parseInt(form.age),
+      Income: parseFloat(form.income),
+      CreditScore: parseInt(form.credit_score),
+      LoanAmount: parseFloat(form.loan_amount)
+    };
+
+    const res = await axios.post('http://localhost:5000/predict', payload); // also fix port
+    setResult(res.data.result);
+  } catch (err) {
+    setResult("Error predicting result");
+  }
+};
+
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
