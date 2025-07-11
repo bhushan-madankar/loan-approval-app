@@ -3,6 +3,6 @@ services:
     name: ml-model
     env: python
     buildCommand: ""
-    startCommand: gunicorn app:app
+    startCommand: gunicorn app:app --bind 0.0.0.0:10000
     pythonVersion: 3.10.13
     rootDir: ml-model
