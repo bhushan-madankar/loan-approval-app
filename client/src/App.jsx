@@ -34,7 +34,9 @@ export default function App() {
       LoanAmount: parseFloat(form.loan_amount)
     };
 
-    const res = await axios.post('http://localhost:5000/predict', payload); // also fix port
+    // const res = await axios.post('http://localhost:5000/predict', payload); // also fix port
+    const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/predict`, data)
+
     setResult(res.data.result);
   } catch (err) {
     setResult("Error predicting result");
